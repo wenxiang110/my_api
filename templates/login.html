@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+</head>
+<body>
+<div class="login_body">
+    <div class="login-alert hide"></div>
+    <div class="login_form">
+        <form id="login-form" >
+            <div class="login-input">
+                <input type="text"  class="input" name="username" placeholder="请输入用户名">
+                <span class="login-icon"></span>
+            </div>
+            <div class="login-input">
+                <input type="password" class="input" name="password" placeholder="请输入密码">
+                <span class="password-icon"></span>
+            </div>
+            <div class="login-input">
+                <input type="button"  id="login" class="login-button" value="登录">
+                <input type="reset" class="login-button" value="重置">
+            </div>
+        </form>
+    </div>
+</div>
+<script src="/static/js/jquery-1.12.4.js"></script>
+<script src="/static/js/jquery.md5.js"></script>
+<script src="/static/js/login.js"></script>
+</body>
+</html>

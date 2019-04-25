@@ -1,0 +1,62 @@
+.login_body{
+    background-image: url("/static/image/timg.jpg");
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.login_form{
+    position: fixed;
+    height: 400px;
+    width: 500px;
+    background-color: white;
+    top: 50%;
+    right: 50%;
+    margin-top: -200px;
+    margin-right: -200px;
+
+}
+.login_form .login-input{
+    margin-top: 50px;
+    margin-left: 140px;
+    height: 30px;
+    width: 200px;
+    position: relative;
+
+
+}
+.login-input .login-icon{
+    position: absolute;
+    background-image: url("/static/image/i_name.jpg");
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    top: 10px;
+    right: -30px;
+    background-repeat: no-repeat;
+}
+.login-input .password-icon{
+     position: absolute;
+    background-image: url("/static/image/i_pwd.jpg");
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    top: 10px;
+    right: -30px;
+    background-repeat: no-repeat;
+}
+.login-input .input{
+    height: 30px;
+    width: 200px;
+    padding-right: 30px;
+}
+.login-input .login-button{
+    padding:10px 20px;
+    margin-right: 20px;
+    border-radius: 30px;
+    background-color: deepskyblue;
+
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/interface_set.css">
+</head>
+<body class="home_body">
+    <div class="home-header">
+        <div class="user-info">{{ username }}
+            <div class="user-logout">
+                <a href="/logout">退出登录</a>
+            </div>
+        </div>
+    </div>
+    <div class="set_menu">
+        <div class="set_menu_title"><h3>测试集合</h3></div>
+        {% for x in result %}
+            <div class="set_result">
+                <a href="/Interface_set/{{ x.id }}"> {{ x.reslut_name }}</a>
+            </div>
+            <div class="set_add">+</div>
+        {% endfor %}
+    </div>
+    <div class="home_menu">
+        <div class="home-title">
+           接口测试管理平台
+        </div>
+        <div class="home-lines">
+            <a>项目管理</a>
+            <a href="/API/">接口管理</a>
+            <a href="/Interface/">测试用例管理</a>
+            <a class="active">测试报告管理</a>
+            <a>用户管理</a>
+        </div>
+    </div>
+    <script src="/static/js/jquery-1.12.4.js"></script>
+    <script src="/static/js/project.js"></script>
+</body>
+</html>

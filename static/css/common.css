@@ -1,0 +1,116 @@
+.input{
+    padding: 2px 5px;
+
+
+}
+.project-form{
+    font-size: 15px;
+}
+.project-form li{
+    margin: 20px 100px;
+    list-style-type: none;
+}
+.button{
+    padding:2px 10px;
+    margin-left:150px;
+    border-radius: 30px;
+}
+.home-pagination{
+    color: #46b8da;
+    font-size: 14px;
+    float: right;
+}
+.home-pagination .current{
+    margin-right: 10px;
+}
+.table-button{
+    padding: 0 1px;
+    text-decoration: none;
+}
+.table-button:hover{
+    color: #46b8da;
+    cursor: pointer;
+}
+.table-edit{
+    padding: 0 1px;
+    text-decoration: none;
+}
+.table-edit:hover{
+    color: #46b8da;
+    cursor: pointer;
+}
+.table-delete{
+    padding: 0 1px;
+    text-decoration: none;
+}
+.table-delete:hover{
+    color: #46b8da;
+    cursor: pointer;
+}
+.form-title{
+    margin-left: 5px;
+    margin-top: 4px;
+    font-weight: bold;
+}
+.login-alert{
+    height: 30px;
+    width: 200px;
+    background-color: #faecd8;
+    position: fixed;
+    top: 150px;
+    left: 42%;
+    z-index: 50;
+    opacity: 0.5;
+    text-align: center;
+    color: red;
+}
+.hide{
+    display: none;
+}
+.API-sapn{
+    font-weight: bold;
+    margin-left: 10px;
+}
+.API-input{
+    padding: 2px 13px;
+    margin-left: 10px;
+
+}
+.API-input-comomn{
+    margin-top: 30px;
+}
+.API-textarea{
+    line-height: 20px;
+    height: 100px;
+    margin-top: 30px;
+}
+.textarea{
+    width: 500px;
+    height: 100px;
+
+}
+.API-alert{
+    position: fixed;
+    height: 30px;
+    width: 200px;
+    top: 50px;
+    left: 850px;
+    background-color: wheat;
+    color: red;
+    text-align: center;
+}
+.API-para{
+    position: fixed;
+    z-index: 11;
+    height: 500px;
+    width: 800px;
+    margin-left: 600px;
+    margin-top: 200px;
+    background-color: white;
+
+}
+.select-common{
+    min-width: 200px;
+    min-height: 30px;
+    margin-left: 5px;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/API.css">
+    <link rel="stylesheet" href="/static/css/Interface.css">
+</head>
+<body class="home_body">
+    <div class="home-header">
+        <div class="user-info">{{ username }}
+            <div class="user-logout">
+                <a href="/logout">退出登录</a>
+            </div>
+        </div>
+        <div class="project-content">
+            <div class="project-header">
+                <span>接口名称:&nbsp&nbsp</span>
+                <select   name="API_query" style="min-width: 150px;min-height: 25px">
+                {% for i in API %}
+                    <option value="{{ API.id }}"> {{ i.API_name }}</option>
+                {% endfor %}
+                </select>
+                <span>用例名称&nbsp&nbsp</span><input type="text" placeholder="请输入用例名称" name="query_Interface_name">
+                <input type="button" value="查询" id="project-q">
+                <input class="Interface-new" type="button" value="新增用例" >
+            </div>
+            <div class="project-table">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>所属项目</th>
+                            <th>所属接口</th>
+                            <th>用例名称</th>
+                            <th>用例描述</th>
+                            <th>预期结果</th>
+                            <th>测试结果</th>
+                            <th>最近测试时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in Interface %}
+                            <tr Interface-id={{ i.id }}>
+                                <td>{{ forloop.counter}}</td>
+                                <td project_id={{ i.API.project_id }}>{{ i.API.project.project_name }}</td>
+                                <td API_id={{ i.API_id }}>{{ i.API.API_name}}</td>
+                                <td>{{ i.interface_name }}</td>
+                                <td>{{ i.interface_remark }}</td>
+                                <td>{{ i.interface_result|truncatechars:10 }}</td>
+                                <td>{{ i.interface_rel_result }}</td>
+                                <td>{{ i.create_time|date:"Y.m.d" }}</td>
+                                <td >
+                                    <a class="API_do">执行</a>
+                                    <a class="interface-edit">编辑</a>
+                                    <a class="interface-delete">删除</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="home-pagination">
+                <span class="step-links">
+                    <span class="current" >共{{ Interface.paginator.num_pages }}页</span>
+                    {% if Interface.has_previous %}
+                        <a href="?page={{ Interface.previous_page_number }}">上一页</a>
+                    {% endif %}
+                    <span >
+                        第 {{ Interface.number }} 页
+                    </span>
+                    {% if Interface.has_next %}
+                        <a href="?page={{ Interface.next_page_number }}">下一页</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="home_menu">
+        <div class="home-title">
+           接口测试管理平台
+        </div>
+        <div class="home-lines">
+            <a  href="/project/">项目管理</a>
+            <a href="/API/">接口管理</a>
+            <a class="active">测试用例管理</a>
+            <a>测试报告管理</a>
+            <a>用户管理</a>
+        </div>
+    </div>
+    <div class="home-show hide">
+        <div class="interface-alert hide"></div>
+    </div>
+    <div class="Interface-modal hide">
+        <form id="Interface" class="interface-form">
+            <input type="hidden" name="interface_id">
+            <h4 class="interface-title" style="text-align: center;">新增用例</h4>
+            <div class="interface-input">
+                <label>请选择所属接口:</label><select class="select-common" name="API_name">
+                    {% for r in API %}
+                        <option value= "{{ r.id }}">{{ r.API_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="interface-input">
+              <label>用例名称:</label> <input type="text" name="Interface_name">
+            </div>
+            <div class="interface-textarea">
+                <label>用例描述:</label> <textarea  name="Interface_remark"></textarea>
+            </div>
+            <div class="interface-textarea">
+                <label>预期结果:</label><textarea name="Interface_result"></textarea>
+            </div>
+            <div class="interface-button">
+                <input type="button"  class="interface-a" value="确定">
+                <input type="button"  class="interface-b" value="取消">
+            </div>
+        </form>
+
+
+    </div>
+    <div class="API-para hide">
+        <div class="modal-header">
+            <strong>接口token</strong>
+        </div>
+        <div>
+            <input class="form-control" type="text" placeholder="请输入token" name="API-token">
+        </div>
+        <div>
+            <strong style="margin-left: 5px">测试结果:</strong><textarea class="form-control" rows="10" cols="43" name="test_result"></textarea>
+        </div>
+        <div class="modal-footer">
+            <input class="btn btn-default" type="button" value="确定">
+            <input class="btn btn-primary" type="button" value="关闭">
+        </div>
+    </div>
+    <script src="/static/js/jquery-1.12.4.js"></script>
+    <script src="/static/js/API.js"></script>
+    <script src="/static/js/project.js"></script>
+    <script src="/static/js/Interface.js"></script>
+</body>
+</html>

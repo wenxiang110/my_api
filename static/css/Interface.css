@@ -1,0 +1,58 @@
+.Interface-new{
+    float: right;
+    margin-right: 50px;
+}
+.Interface-modal{
+    position: fixed;
+    height: 400px;
+    width: 400px;
+    margin-top: 200px;
+    margin-left: 700px;
+    background-color: white;
+    z-index: 12;
+
+}
+.interface-input{
+    height: 50px;
+
+
+}
+.interface-input input{
+    min-width: 200px;
+    min-height: 30px;
+}
+.interface-form{
+     width: 344px;
+    text-align: right;
+}
+.interface-textarea{
+    height: 80px;
+
+}
+.interface-textarea textarea{
+    min-width: 200px;
+    min-height: 70px;
+
+
+}
+.interface-button{
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 50px;
+
+}
+.interface-button input{
+    margin-right: 10px;
+    padding: 10px;
+}
+.interface-alert{
+    position: fixed;
+    background-color: white;
+    height: 30px;
+    width: 200px;
+    z-index: 13;
+    margin-left: 780px;
+    margin-top: 100px;
+    text-align: center;
+    color: red;
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/API.css">
+</head>
+<body class="home_body">
+    <div class="home-header">
+        <div class="user-info">{{ username }}
+            <div class="user-logout">
+                <a href="/logout">退出登录</a>
+            </div>
+        </div>
+        <div class="project-content">
+            <div class="project-header">
+                <span>项目名称:&nbsp&nbsp</span>
+                <select   name="query_project" style="min-width: 150px;min-height: 25px">
+                {% for i in project_name %}
+                    <option value="{{ i.id }}"> {{ i.project_name }}</option>
+                {% endfor %}
+                </select>
+                <span>接口名称&nbsp&nbsp</span><input type="text" placeholder="请输入接口名称名称" name="query_API">
+                <input type="button" value="查询" id="project-q">
+                <input class="API-new" type="button" value="新增接口" >
+            </div>
+            <div class="project-table">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>所属项目</th>
+                            <th>接口名称</th>
+                            <th>接口地址</th>
+                            <th>接口参数</th>
+                            <th>接口描述</th>
+                            <th>接口方式</th>
+                            <th>修改时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in API %}
+                            <tr API-id={{ i.id }}>
+                                <td>{{ forloop.counter}}</td>
+                                <td project-id={{ i.project_id }}>{{ i.project.project_name}}</td>
+                                <td>{{ i.API_name }}</td>
+                                <td>{{ i.API_url }}</td>
+                                <td>{{ i.API_para }}</td>
+                                <td>{{ i.API_remark }}</td>
+                                <td>{{ i.get_API_way_display }}</td>
+                                <td>{{ i.create_time|date:"Y.m.d" }}</td>
+                                <td type-id={{ i.API_way }}>
+                                    <a class="API-edit">编辑</a>
+                                    <a class="API-delete">删除</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="home-pagination">
+                <span class="step-links">
+                    <span class="current" >共{{ API.paginator.num_pages }}页</span>
+                    {% if API.has_previous %}
+                        <a href="?page={{ API.previous_page_number }}">上一页</a>
+                    {% endif %}
+                    <span >
+                        第 {{ API.number }} 页
+                    </span>
+                    {% if API.has_next %}
+                        <a href="?page={{ API.next_page_number }}">下一页</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="home_menu">
+        <div class="home-title">
+           接口测试管理平台
+        </div>
+        <div class="home-lines">
+            <a  href="/project/">项目管理</a>
+            <a class="active">接口管理</a>
+            <a href="/Interface/">测试用例管理</a>
+            <a href="/Interface_set/">测试报告管理</a>
+            <a>用户管理</a>
+        </div>
+    </div>
+    <div class="home-show hide">
+        <div class="API-alert hide"></div>
+    </div>
+    <div class="API-modal hide">
+        <form id="API-add">
+            <div class="API-add-title">新增接口</div>
+            <div class="API-input-comomn">
+            <span class="API-sapn">所属项目:</span><select name="project_name" style="min-width: 200px; min-height: 30px;margin-left: 10px;margin-top: 10px">
+                {% for r in project_name %}
+                <option value="{{ r.id }}" >{{ r.project_name }}</option>
+                {% endfor %}
+            </select>
+             <span class="API-sapn">接口名称:</span><input  class="API-input" type="text" name="API_name">
+            </div>
+            <input type="hidden" name="API-id">
+            <div class="API-input-comomn">
+                <span class="API-sapn">接口地址:</span><input  class="API-input" type="text" name="API_url">
+                <span class="API-sapn">接口方式:</span><select name="API_way" style="min-width: 200px; min-height: 30px;margin-left: 10px;margin-top: 10px">
+                <option value="0">POST</option>
+                <option value="1">GET</option>
+                </select>
+            </div>
+            <div class="API-textarea">
+                <span class="API-sapn">接口参数:</span><textarea class="textarea" name="API_para" placeholder="请输入字典格式数据"></textarea>
+            </div>
+            <div class="API-textarea">
+                <span class="API-sapn">接口描述:</span><textarea class="textarea"  name="API_remark"></textarea>
+            </div>
+            <div class="API-button">
+                <input type="button" class="api-button" value="确定">
+                <input type="button" class="api-button" value="取消">
+            </div>
+        </form>
+    </div>
+    <div class="API-para hide">
+        <div class="modal-header">
+            <strong>接口token</strong>
+        </div>
+        <div>
+            <input class="form-control" type="text" placeholder="请输入token" name="API-token">
+        </div>
+        <div class="modal-footer">
+            <input class="btn btn-default" type="button" value="确定">
+            <input class="btn btn-primary" type="button" value="取消">
+        </div>
+    </div>
+    <script src="/static/js/jquery-1.12.4.js"></script>
+    <script src="/static/js/API.js"></script>
+    <script src="/static/js/project.js"></script>
+</body>
+</html>
