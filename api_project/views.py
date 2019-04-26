@@ -16,7 +16,10 @@ class BaseView(View):
             return redirect('/login/')
 class User_Login(View):
     def get(self,request):
-        return render(request,'login.html')
+        if request.session:
+            return redirect('/project/')
+        else:
+            return render(request,'login.html')
     def post(self,request):
         ecode_message={}
         username=request.POST.get('username')
@@ -252,3 +255,38 @@ class Interface_set(BaseView):
             print(i.reslut_name)
         username=request.session.get('username')
         return render(request,'interface_set.html',{"username":username,"result":result})
+    def post(self,request):
+        message = {}
+        name=request.POST.get("set_name")
+        mark=request.POST.get("set_mark")
+        id=request.POST.get("set_id",None)
+        if id:
+            models.API_result.objects.filter(id=id).update(reslut_name=name,reslut_remark=mark)
+            message["ecode"] = 0
+            return HttpResponse(json.dumps(message))
+        else:
+            if name:
+                models.API_result.objects.create(reslut_name=name,reslut_remark=mark)
+                message["ecode"]=0
+                return HttpResponse(json.dumps(message))
+            else:
+                message["eocde"]=0
+                return HttpResponse(json.dumps(message))
+    def put(self,request):
+        message={}
+        result=QueryDict(request.body)
+        id=result.get("id")
+        print(id)
+        result=models.API_result.objects.filter(id=id).first()
+        message["name"]=result.reslut_name
+        message["mark"]=result.reslut_remark
+        return HttpResponse(json.dumps(message))
+    def delete(self,request):
+        message=dict()
+        result=QueryDict(request.body)
+        id=result.get("id")
+        models.API_result.objects.filter(id=id).delete()
+        message["eocde"] = 0
+        return HttpResponse(json.dumps(message))
+def detail(request):
+    print(request.body)

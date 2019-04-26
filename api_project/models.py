@@ -32,3 +32,5 @@ class interface(models.Model):
 
 class API_result(models.Model):
     reslut_name=models.CharField(max_length=50)
+    reslut_remark=models.TextField()
+    interface=models.ManyToManyField("interface")

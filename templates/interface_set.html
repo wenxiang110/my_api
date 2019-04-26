@@ -19,11 +19,13 @@
     <div class="set_menu">
         <div class="set_menu_title"><h3>测试集合</h3></div>
         {% for x in result %}
-            <div class="set_result">
-                <a href="/Interface_set/{{ x.id }}"> {{ x.reslut_name }}</a>
+            <div class="set_result" reslut_id={{ x.id }}>
+                <a href="/Interface_set/detail/{{ x.id }}"> {{ x.reslut_name }}</a>
+                <span class="edit-icon"><img src="/static/image/edit.png"></span>
+                <span class="delete-icon"><img src="/static/image/delete.png"></span>
             </div>
-            <div class="set_add">+</div>
         {% endfor %}
+        <div class="set_add">+</div>
     </div>
     <div class="home_menu">
         <div class="home-title">
@@ -36,8 +38,42 @@
             <a class="active">测试报告管理</a>
             <a>用户管理</a>
         </div>
+        <div class="home-show hide">
+            <div class="interface-modal hide">
+                <form id="set_form">
+                    <div class="form-header">
+                        <h4>添加集合</h4>
+                    </div>
+                    <div class="form-body">
+                        <div class="form-content">
+                            <div class="form-conetent-left">
+                                <label>集合名称：</label>
+                            </div>
+                            <div class="form-content-right">
+                                <input type="text" name="set_name">
+                            </div>
+                        </div>
+                        <div class="form-content">
+                            <div class="form-conetent-left">
+                                <label>说明：</label>
+                            </div>
+                            <div class="form-content-right">
+                                <input type="text" name="set_mark">
+                                <input type="hidden" name="set_id">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-foot">
+                        <input class="btn btn-primary" type="button" value="确定">
+                        <input class="btn" type="button" value="取消">
+                    </div>
+
+                </form>
+            </div>
+        </div>
     </div>
     <script src="/static/js/jquery-1.12.4.js"></script>
     <script src="/static/js/project.js"></script>
+    <script src="/static/js/interface_set.js"></script>
 </body>
 </html>

@@ -27,4 +27,5 @@ urlpatterns = [
     path('Interface/',views.Interface.as_view()),
     path('report/',views.Generate_Report),
     path('Interface_set/',views.Interface_set.as_view()),
+    path('Interface_set/detail/(\d+)',views.detail),
 ]

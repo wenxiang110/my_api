@@ -32,3 +32,19 @@
 
 
 }
+.set_add:hover{
+    cursor: pointer;
+    color: #28a4c9;
+    border: solid;
+}
+.interface-modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 240px;
+    margin-left: -100px;
+    margin-top: -350px;
+    background-color: #eeeeee;
+    z-index: 20;
+}

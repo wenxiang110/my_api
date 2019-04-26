@@ -102,7 +102,7 @@
     z-index: 9;
 }
 .home-modal{
-     position: fixed;
+    position: fixed;
     top: 50%;
     left: 50%;
     width: 500px;

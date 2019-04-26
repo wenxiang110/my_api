@@ -114,3 +114,60 @@
     min-height: 30px;
     margin-left: 5px;
 }
+.form-header{
+    height: 40px;
+    width: 100%;
+    border-bottom:1px solid ;
+    font-weight: bold;
+
+}
+.form-header h4{
+    font-weight: bold;
+    margin-left: 15px;
+}
+.form-body{
+    padding: 10px 0;
+    text-align: center;
+    height: 130px;
+}
+.form-content{
+    margin-bottom: 60px;
+}
+.form-content input{
+    height: 30px;
+    width: 250px;
+    border-radius:4px ;
+}
+.form-conetent-left{
+    width: 20%;
+    float: left;
+    text-align: right;
+}
+.form-content-right{
+    width: 68%;
+    float: left;
+}
+.form-foot{
+   bottom: 10px;
+    height: 50px;
+    text-align: right;
+    margin-right: 15px;
+}
+.edit-icon img{
+    height: 20px;
+    width: 30px;
+    float: right;
+}
+.delete-icon img{
+     height: 20px;
+     width: 30px;
+     float: right;
+}
+.edit-icon img:hover{
+    cursor: pointer;
+    background-color: red;
+}
+.delete-icon img:hover{
+    cursor: pointer;
+    background-color: deepskyblue;
+}
