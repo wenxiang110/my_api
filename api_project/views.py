@@ -6,6 +6,7 @@ import json
 from django.contrib import auth
 from django.http import QueryDict
 import requests
+from django.core.cache import cache
 # Create your views here.
 class BaseView(View):
     def dispatch(self, request, *args, **kwargs):
@@ -16,10 +17,7 @@ class BaseView(View):
             return redirect('/login/')
 class User_Login(View):
     def get(self,request):
-        if request.session:
-            return redirect('/project/')
-        else:
-            return render(request,'login.html')
+        return render(request,'login.html')
     def post(self,request):
         ecode_message={}
         username=request.POST.get('username')
@@ -288,5 +286,42 @@ class Interface_set(BaseView):
         models.API_result.objects.filter(id=id).delete()
         message["eocde"] = 0
         return HttpResponse(json.dumps(message))
-def detail(request):
-    print(request.body)
+def detail(request,id):
+    result = models.API_result.objects.all()
+    result_all=models.API_result.objects.filter(id=id).first()
+    interface=result_all.interface.all()
+    inter=models.interface.objects.all()
+    username = request.session.get('username')
+    return render(request, 'interface_set.html', {"username": username, "result": result,"interface":interface,"inter":inter})
+def set(request):
+    id=request.POST.get('id')
+    inter_id=request.POST.get('list')
+    set=models.API_result.objects.filter(id=id).first()
+    print(inter_id)
+    for r in inter_id:
+        if r.isdigit():
+            print(r)
+            a=models.interface.objects.get(id=int(r))
+            set.interface.add(a)
+    return HttpResponse(json.dumps("12"))
+def start_run(request):
+    id=request.POST.get('id')
+    set_id=models.API_result.objects.filter(id=id).first()
+    inter=set_id.interface.all()
+    for i in inter:
+        r=requests.post(i.API.API_url,data=i.API.API_para,headers={"content/type":"application/json"})
+        models.interface.objects.filter(id=i.id).update(interface_rel_result=r.json())
+    return HttpResponse(json.dumps("1"))
+class User(BaseView):
+    def get(self,request):
+        user=models.Userinfo.objects.all()
+        painator=Paginator(user,10)
+        page = request.GET.get('page')
+        try:
+            user = painator.page(page)
+        except PageNotAnInteger:
+            user = painator.page(1)
+        except EmptyPage:
+            user = painator.page(painator.num_pages)
+        username = request.session.get('username')
+        return render(request, 'user.html', {"username": username,"user":user})

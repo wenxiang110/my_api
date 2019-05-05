@@ -29,7 +29,6 @@ class interface(models.Model):
    interface_remark=models.TextField()
    interface_rel_result=models.TextField()
    create_time = models.DateTimeField(auto_now_add=True)
-
 class API_result(models.Model):
     reslut_name=models.CharField(max_length=50)
     reslut_remark=models.TextField()

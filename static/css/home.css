@@ -99,7 +99,7 @@
     right: 0px;
     opacity: 0.6;
     background-color: black;
-    z-index: 9;
+    z-index: 8;
 }
 .home-modal{
     position: fixed;
@@ -109,8 +109,8 @@
     height: 400px;
     margin-left: -250px;
     margin-top: -250px;
-    background-color: #eeeeee;
-    z-index: 10;
+    background-color: white;
+    z-index: 30;
 }
 .hide{
     display: none;

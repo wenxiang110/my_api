@@ -59,3 +59,15 @@ $(".delete-icon").click(function (data) {
     })
 
 })
+$(".set_all").click(function () {
+            $("input[name='set_inter']").each(function () {
+                if($(this).prop('checked')){
+                    $(this).prop('checked',false);
+                }
+                else {
+                    $(this).prop('checked',true)
+                }
+
+            })
+
+})

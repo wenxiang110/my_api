@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/static/css/home.css">
     <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css">
     <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/user.css"
 </head>
 <body class="home_body">
     <div class="home-header">
@@ -16,42 +17,29 @@
         </div>
         <div class="project-content">
             <div class="project-header">
-                <span>项目名称:&nbsp&nbsp</span><input type="text" placeholder="请输入项目名称" name="query_project">
+                <span>用户名称:&nbsp&nbsp</span><input type="text" placeholder="请输入用户名称" name="query_project">
                 <input type="button" value="查询" id="project-q">
-                <input  class="project-new" type="button" value="新建项目" >
+                <input  class="user-new" type="button" value="新增用户" >
             </div>
             <div class="project-table">
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>序号</th>
-                            <th>项目名称</th>
-                            <th>项目版本</th>
-                            <th>项目地址</th>
-                            <th>备注</th>
-                            <th>状态</th>
+                            <th>用户名称</th>
                             <th>修改时间</th>
                             <th>操作</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for i in project %}
+                        {% for i in user %}
                             <tr project-id={{ i.id }}>
                                 <td>{{ forloop.counter}}</td>
-                                <td>{{ i.project_name }}</td>
-                                <td>{{ i.project_ver }}</td>
-                                <td>{{ i.project_url }}</td>
-                                <td>{{ i.project_remark }}</td>
-                                <td>{{ i.get_project_type_display }}</td>
+                                <td>{{ i.username }}</td>
                                 <td>{{ i.create_time|date:"Y.m.d" }}</td>
-                                <td p-id={{ i.project_type}}>
-                                    {% if i.project_type == 0 %}
-                                        <a  class="table-button">停用</a>
-                                    {% else %}
-                                        <a  class="table-button">启用</a>
-                                    {% endif %}
-                                    <a  class="table-edit">编辑</a>
-                                    <a  class="table-delete">删除</a>
+                                <td>
+                                    <a  class="user-edit">编辑</a>
+                                    <a  class="user-delete">删除</a>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -60,15 +48,15 @@
             </div>
             <div class="home-pagination">
                 <span class="step-links">
-                    <span class="current" >共{{ project.paginator.num_pages }}页</span>
-                    {% if project.has_previous %}
-                        <a href="?page={{ project.previous_page_number }}">上一页</a>
+                    <span class="current" >共{{ user.paginator.num_pages }}页</span>
+                    {% if user.has_previous %}
+                        <a href="?page={{ user.previous_page_number }}">上一页</a>
                     {% endif %}
                     <span >
-                        第 {{ project.number }} 页
+                        第 {{ user.number }} 页
                     </span>
-                    {% if project.has_next %}
-                        <a href="?page={{ project.next_page_number }}">下一页</a>
+                    {% if user.has_next %}
+                        <a href="?page={{ user.next_page_number }}">下一页</a>
                     {% endif %}
                 </span>
             </div>
@@ -79,35 +67,27 @@
            接口测试管理平台
         </div>
         <div class="home-lines">
-            <a class="active">项目管理</a>
+            <a href="/api_project/">项目管理</a>
             <a href="/API/">接口管理</a>
             <a href="/Interface/">测试用例管理</a>
             <a href="/Interface_set/">测试报告管理</a>
-            <a>用户管理</a>
+            <a class="active">用户管理</a>
         </div>
     </div>
     <div class="home-show hide"></div>
-    <div class="home-modal hide">
-        <form id="project-add" class="project-form">
-            <div  class="form-title">新增项目</div>
+    <div class="user-modal hide">
+        <form id="user-add" class="project-form">
+            <div  class="form-title">新增用户</div>
             <input type="hidden" name="project-id">
-            <li>项目名称：<input type="text" name="projectname"  class="input"></li>
-            <li>项目版本：<input type="text" name="projectver"   class="input"></li>
+            <li>用户名称：<input type="text" name="projectname"  class="input"></li>
+            <li>用户密码：<input type="text" name="projectver"   class="input"></li>
             <li>项目地址：<input type="text" name="projecturl"   class="input"></li>
-            <li>项目状态：<select name="projecttype">
-                        <option value="0">启用</option>
-                        <option value="1">禁用</option>
-                      </select>
-            </li>
-            <li>备注:<textarea rows="4" cols="40" name="projectremark">
-
-            </textarea>
-            </li>
             <input type="button" value="确定" class="button">
             <input type="button" value="取消" class="button">
         </form>
     </div>
     <script src="/static/js/jquery-1.12.4.js"></script>
     <script src="/static/js/project.js"></script>
+    <script src="/static/js/user.js"></script>
 </body>
 </html>

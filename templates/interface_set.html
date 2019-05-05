@@ -27,19 +27,78 @@
         {% endfor %}
         <div class="set_add">+</div>
     </div>
+    <div class="set_detail">
+        <div class="set_header">
+            <input class="btn btn-primary" type="button" value="添加用例">
+            <input  class="btn btn-primary" type="button" value="开始运行">
+        </div>
+        <div>
+            <table class="table table-striped">
+                <thead>
+                    <th>编号</th>
+                    <th>用例名称</th>
+                    <th>运行结果</th>
+                    <th>运行时间</th>
+                </thead>
+                <tr>
+                    {% for j in interface %}
+                        <tr>
+                            <td>{{ forloop.counter}}</td>
+                            <td>{{ j.interface_name }}</td>
+                            <td>{{ j.interface_rel_result }}</td>
+                            <td>{{ j.create_time|date:"Y-m-d H:i:s" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div></div>
+    </div>
     <div class="home_menu">
         <div class="home-title">
            接口测试管理平台
         </div>
         <div class="home-lines">
-            <a>项目管理</a>
+            <a href="/project/">项目管理</a>
             <a href="/API/">接口管理</a>
             <a href="/Interface/">测试用例管理</a>
             <a class="active">测试报告管理</a>
             <a>用户管理</a>
         </div>
-        <div class="home-show hide">
-            <div class="interface-modal hide">
+    </div>
+    <div class="home-show hide"></div>
+    <div class="add_inter hide">
+        <div class="add_inter_header">
+            <span>导入到集合</span>
+        </div>
+        <div class="set_body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th><input class="set_all" type="checkbox"></th>
+                        <th>序号</th>
+                        <th>用例名称</th>
+                        <th>请求方式</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for i in inter %}
+                    <tr>
+                        <td inter_id={{ i.id }}><input type="checkbox" name="set_inter"></td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.interface_name }}</td>
+                        <td>{{ i.API.get_API_way_display}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="set_bottom">
+            <input type="button" class=" btn btn-primary" value="确定">
+            <input type="button" class="btn" value="取消">
+        </div>
+    </div>
+    <div class="interface-modal hide">
                 <form id="set_form">
                     <div class="form-header">
                         <h4>添加集合</h4>
@@ -70,10 +129,9 @@
 
                 </form>
             </div>
-        </div>
-    </div>
     <script src="/static/js/jquery-1.12.4.js"></script>
     <script src="/static/js/project.js"></script>
     <script src="/static/js/interface_set.js"></script>
+    <script src="/static/js/detail.js"></script>
 </body>
 </html>

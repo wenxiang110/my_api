@@ -37,7 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api_project',
 ]
-
+CACHES={
+    'default':{
+        'BACKEND':"redis_cache.cache.RedisCache",
+        'LOCATION':'127.0.0.1:6379',
+        'OPTIONS':{
+            "CLIENT_CLASS":"redis_cache.client.DefaultClient",
+        },
+    },
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

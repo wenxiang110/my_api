@@ -1,0 +1,14 @@
+.user-edit:hover{
+    cursor: pointer;
+}
+.user-delete:hover{
+    cursor: pointer;
+}
+.user-new{
+    float: right;
+    margin-right: 20px;
+    height: 40px;
+    width: 100px;
+    border:solid 2px;
+    border-radius: 5px;
+}

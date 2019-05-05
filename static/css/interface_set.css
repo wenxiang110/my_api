@@ -48,3 +48,58 @@
     background-color: #eeeeee;
     z-index: 20;
 }
+.set_result a:hover{
+    cursor: pointer;
+}
+.set_detail{
+    width: 1000px;
+    height: 780px;
+    background: white;
+    float: right;
+    margin-right: 100px;
+    margin-top: 20px;
+}
+.set_header{
+    height: 50px;
+    border-bottom: solid 1px;
+    width: 100%;
+
+}
+.set_header input{
+    float: right;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+.add_inter{
+    position: fixed;
+    width: 600px;
+    height: 400px;
+    background-color:white ;
+    margin-left: 600px;
+    margin-top: 200px;
+    z-index: 21;
+}
+.add_inter_header{
+    width: 100%;
+    height: 10%;
+    border-bottom: solid 1px;
+    line-height: 50px;
+}
+.add_inter_header span{
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+.set_bottom{
+    height: 50px;
+    width: 100%;
+    margin-bottom: 0px;
+}
+.set_body{
+    height: 80%;
+}
+.set_bottom input{
+    float: right;
+    margin: 2px 4px;
+}
